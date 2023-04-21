@@ -1,0 +1,8 @@
+#ignore python cashe folders
+*/__pycache__/*
+*/.pytest_cache/*
+*/.mypy_cache/*
+*/.hypothesis/*
+*.pyc
+/src/__pycache__/*
+*.log
