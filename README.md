@@ -1,6 +1,6 @@
 # icecube-2nd-place
 
-Code for 2nd Place Icecube neutrino competition
+Code for 2nd Place Icecube competition
 
 ```python
 # B model 32
