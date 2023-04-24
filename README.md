@@ -88,7 +88,7 @@ The `config.json` file contains various settings and parameters for the training
 |`EMA`         |`false`       |Exponential Moving Average during training|
 |`MODEL_KWARGS`|`(see below)` |Model-specific parameters                 |
 |`WEIGHTS`     |`false`       |Class weights in the loss function        |
-|`LOSS_FUNC`   |`{loss_vms, comb_loss}` |Loss function                             |
+|`LOSS_FUNC`   |`{loss_vms, loss_comb}` |Loss function                             |
 |`METRIC`      |`loss`        |Evaluation metric for model selection     |
 
 For `MODEL_KWARGS`, we have the following parameters:
@@ -102,6 +102,8 @@ For `MODEL_KWARGS`, we have the following parameters:
 
 ## Training
 
+The training process is performed in an `epoch`-based manner. Each `epoch` is divided into `8` `sub-epochs`, essentially dividing the full training data into `8` subsections. The model is trained for a total of `4`-`6` `epochs`, using a `one_cycle` learning schedule. After each `epoch`, the best `checkpoint` is loaded, and the training continues with a decreased `learning rate`. The Exponential Moving Average (`EMA`) and the `loss_comb` function are added closer to the last `epoch`. The example below demonstrates training the `B` model for `4` `epochs`. The `OUT` parameter defines a folder where the model `weights` will be stored. For the next `epoch`, the folder is used to load checkpoints and continue training.
+
 ```python
 # B model 32
 python train.py config.json \
@@ -114,8 +116,8 @@ python train.py config.json \
        LR_MAX 5e-4 \
        MOMS false
 
-#the results will be stored in the folder B_MODEL_32
-#for the 2nd epoch we will resume the training from the checkpoint
+# The results will be stored in the folder B_MODEL_32
+# For the 2nd epoch, we will resume training from the checkpoint
 python train.py config.json \
        MODEL DeepIceModel \
        MODEL_KWARGS.dim 384 \
@@ -129,8 +131,8 @@ python train.py config.json \
        DIV_FINAL 25 \
        EMA true \
 
-#the results will be stored in the folder B_MODEL_32FT
-#for the 3rd epoch we will resume the training from the checkpoint
+# The results will be stored in the folder B_MODEL_32FT
+# For the 3rd epoch, we will resume training from the checkpoint
 python train.py config.json \
        MODEL DeepIceModel \
        MODEL_KWARGS.dim 384 \
@@ -144,8 +146,8 @@ python train.py config.json \
        DIV_FINAL 25 \
        EMA true \
 
-#the results will be stored in the folder B_MODEL_32FT2
-#for the 4th epoch we will resume the training from the checkpoint
+# The results will be stored in the folder B_MODEL_32FT2
+# For the 4th epoch, we will resume training from the checkpoint
 python train.py config.json \
        MODEL DeepIceModel \
        MODEL_KWARGS.dim 384 \
@@ -158,14 +160,10 @@ python train.py config.json \
        DIV 25 \
        DIV_FINAL 25 \
        EMA true \
+       LOSS_FUNC loss_comb \
 
 ```
 
-```python
-       
-       
-
-```
 
 ```python
 # B model 64
