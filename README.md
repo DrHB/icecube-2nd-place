@@ -61,6 +61,41 @@ After completing the data preparation process, your `data` folder should have th
      └── train_meta.parquet
 ```
 
+## Configuration Documentation
+
+The `config.json` file contains various settings and parameters for the training process. Below is a brief explanation of each parameter:
+
+|Parameter   |Value       |Description                               |
+|------------|------------|------------------------------------------|
+|`SELECTION`   |`total`       |Selection criterion for the data          |
+|`OUT`         |`BASELINE`    |Output folder name                        |
+|`PATH`        |`data/`       |Path to the data folder                   |
+|`NUM_WORKERS` |`4`           |Number of worker threads for data loading |
+|`SEED`        |`2023`        |Random seed value for reproducibility     |
+|`BS`          |`32`          |Batch size for training                   |
+|`BS_VALID`    |`32`          |Batch size for validation                 |
+|`L`           |`192`         |Length of input sequence for training     |
+|`L_VALID`     |`192`         |Length of input sequence for validation   |
+|`EPOCHS`      |`8`           |Number of training epochs                 |
+|`MODEL`       |`DeepIceModel`|Model architecture, choise                      |
+|`MOMS`        |`false`       |Momentum scheduling in the optimizer      |
+|`DIV`         |`25`          |Initial learning rate divisor             |
+|`DIV_FINAL`   |`25`          |Final learning rate divisor               |
+|`EMA`         |`false`       |Exponential Moving Average during training|
+|`MODEL_KWARGS`|`(see below)` |Model-specific parameters                 |
+|`WEIGHTS`     |`false`       |Class weights in the loss function        |
+|`LOSS_FUNC`   |`{loss_vms, comb_loss}` |Loss function                             |
+|`METRIC`      |`loss`        |Evaluation metric for model selection     |
+
+For `MODEL_KWARGS`, we have the following parameters:
+|Parameter|Value|Description                              |
+|---------|-----|-----------------------------------------|
+|`dim`      |384  |Input dimension of the model             |
+|`dim_base` |128  |Base dimension for the model layers      |
+|`depth`    |8    |Number of layers in the model            |
+|`head_size`|32   |Head size for multi-head attention layers|
+
+
 ## Training
 
 ```python

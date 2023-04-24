@@ -26,14 +26,14 @@ from pdb import set_trace
 
 
 def read_config_file(file_path):
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         config_data = json.load(f)
     return config_data
 
 
 def train(config):
     ds_train = IceCubeCache(
-        config['PATH'],
+        config["PATH"],
         mode="train",
         L=config["L"],
         selection=config["SELECTION"],
@@ -81,32 +81,53 @@ def train(config):
     )
 
     data = DataLoaders(dl_train, dl_val)
-    model = config.MODEL(**config["MODEL_KWARGS"])
-    if config["WEITHS"]:
-        print("Loading weights from ...", config["WEITHS"])
-        model.load_state_dict(torch.load(config["WEITHS"]))
+    model = config["MODEL"](**config["MODEL_KWARGS"])
+    if config["WEIGHTS"]:
+        print("Loading weights from ...", config["WEIGHTS"])
+        model.load_state_dict(torch.load(config["WEIGHTS"]))
     model = nn.DataParallel(model)
     model = model.cuda()
+    cbs = [
+        GradientClip(3.0),
+        CSVLogger(),
+        SaveModelCallback(monitor="loss", comp=np.less, every_epoch=True),
+        GradientAccumulation(n_acc=4096 // config["BS"]),
+    ]
+    if config["EMA"]:
+        cbs.append(EMACallback())
+
     learn = Learner(
         data,
         model,
+        cbs=cbs,
         path=config["OUT"],
         loss_func=config["LOSS_FUNC"],
-        cbs=[
-            GradientClip(3.0),
-            CSVLogger(),
-            SaveModelCallback(monitor="loss", comp=np.less, every_epoch=True),
-            GradientAccumulation(n_acc=4096 // config["BS"]),
-        ],
         metrics=[config["METRIC"]],
         opt_func=partial(WrapperAdamW, eps=1e-7),
     ).to_fp16()
 
+    learn.fit_one_cycle(
+        8,
+        lr_max=1e-5,
+        wd=0.05,
+        pct_start=0.01,
+        div=config["DIV"],
+        div_final=config["DIV_FINAL"],
+        moms=tuple(config["MOMS"]) if config["MOMS"] else None,
+    )
+
+
 def main():
-    parser = argparse.ArgumentParser(description='Create a model from a JSON config file.')
-    parser.add_argument('config_file', type=str, help='Path to the JSON config file.')
-    parser.add_argument('configs', nargs='*', metavar=('KEY', 'VALUE'),
-                        help='The JSON config key to override and its new value.')
+    parser = argparse.ArgumentParser(
+        description="Create a model from a JSON config file."
+    )
+    parser.add_argument("config_file", type=str, help="Path to the JSON config file.")
+    parser.add_argument(
+        "configs",
+        nargs="*",
+        metavar=("KEY", "VALUE"),
+        help="The JSON config key to override and its new value.",
+    )
 
     args = parser.parse_args()
     config_file_path = args.config_file
@@ -115,7 +136,7 @@ def main():
 
     if args.configs:
         for config_key, config_value in zip(args.configs[::2], args.configs[1::2]):
-            keys = config_key.split('.')
+            keys = config_key.split(".")
             last_key = keys.pop()
 
             current_data = config_data
@@ -139,7 +160,8 @@ def main():
 
     seed_everything(config_data["SEED"])
     os.makedirs(config_data["OUT"], exist_ok=True)
-    #train(config_data)
+    train(config_data)
+
 
 if __name__ == "__main__":
     main()

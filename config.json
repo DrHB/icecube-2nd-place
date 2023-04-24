@@ -1,22 +1,26 @@
 {
   "SELECTION": "total",
-  "OUT": "BASELINE",       #out folder name
-  "PATH": "data/",         #pat to data folder
-  "NUM_WORKERS": 8,        #number of workers for data loading
-  "SEED": 2023,            #random seed
-  "BS": 3072,              #batch size       
-  "BS_VALID": 3072,        #batch size for validation
-  "L": 192,                #length of the input event
-  "L_VALID": 192,          #length of the input event for validation
-  "EPOCHS": 8,             #number of epochs (here 8 epoch refrts 1 time passing through the whole dataset)
-  "MODEL": "DeepIceModel", #model name
+  "OUT": "BASELINE",       
+  "PATH": "data/",         
+  "NUM_WORKERS": 4,        
+  "SEED": 2023,            
+  "BS": 32,                    
+  "BS_VALID": 32,        
+  "L": 192,               
+  "L_VALID": 192,          
+  "EPOCHS": 8,             
+  "MODEL": "DeepIceModel", 
+  "MOMS": false,
+  "DIV": 25,
+  "DIV_FINAL": 25,
+  "EMA": false, 
   "MODEL_KWARGS": {
     "dim": 384,
     "dim_base": 128,
     "depth": 8,
     "head_size": 32
   },
-  "WEIGHTS": false,        #if path is given, the model will be initialized with the weights from the given path
-  "LOSS_FUNC": "loss_vms", #loss function
-  "METRIC": "loss"         #metric
+  "WEIGHTS": false,       
+  "LOSS_FUNC": "loss_vms", 
+  "METRIC": "loss"         
 }
