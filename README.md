@@ -1,4 +1,4 @@
-## icecube-2nd-place 
+# icecube-2nd-place 
 This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice) developed by [DrHB](https://www.kaggle.com/drhabib) and [Iafoss](https://www.kaggle.com/iafoss). To reproduce our results, please follow the instructions provided below.
 
 ## Installation
