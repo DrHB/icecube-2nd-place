@@ -83,6 +83,7 @@ The `config.json` file contains various settings and parameters for the training
 |`MODEL`       |`DeepIceModel`|Model architecture, choise                      |
 |`MOMS`        |`false`       |Momentum scheduling in the optimizer      |
 |`DIV`         |`25`          |Initial learning rate divisor             |
+|`LR_MAX`      |`5e-4`        |Max learning rate            |
 |`DIV_FINAL`   |`25`          |Final learning rate divisor               |
 |`EMA`         |`false`       |Exponential Moving Average during training|
 |`MODEL_KWARGS`|`(see below)` |Model-specific parameters                 |
@@ -93,10 +94,10 @@ The `config.json` file contains various settings and parameters for the training
 For `MODEL_KWARGS`, we have the following parameters:
 |Parameter|Value|Description                              |
 |---------|-----|-----------------------------------------|
-|`dim`      |384  |Input dimension of the model             |
-|`dim_base` |128  |Base dimension for the model layers      |
-|`depth`    |8    |Number of layers in the model            |
-|`head_size`|32   |Head size for multi-head attention layers|
+|`dim`      |`384`  |Input dimension of the model             |
+|`dim_base` |`128`  |Base dimension for the model layers      |
+|`depth`    |`8`    |Number of layers in the model            |
+|`head_size`|`32`   |Head size for multi-head attention layers|
 
 
 ## Training
@@ -105,10 +106,65 @@ For `MODEL_KWARGS`, we have the following parameters:
 # B model 32
 python train.py config.json \
        MODEL DeepIceModel \
-       MODEL_KWARGS.dim 768 \
-       MODEL_KWARGS.dim_base 192 \
+       MODEL_KWARGS.dim 384 \
+       MODEL_KWARGS.dim_base 128 \
        MODEL_KWARGS.depth 12 \
-       MODEL_KWARGS.head_size 32
+       MODEL_KWARGS.head_size 32 \
+       OUT B_MODEL_32 \
+       LR_MAX 5e-4 \
+       MOMS false
+
+#the results will be stored in the folder B_MODEL_32
+#for the 2nd epoch we will resume the training from the checkpoint
+python train.py config.json \
+       MODEL DeepIceModel \
+       MODEL_KWARGS.dim 384 \
+       MODEL_KWARGS.dim_base 128 \
+       MODEL_KWARGS.depth 12 \
+       MODEL_KWARGS.head_size 32 \
+       OUT B_MODEL_32FT \
+       WEIGHTS B_MODEL_32/models/model_7.pth \
+       LR_MAX 2e-5 \
+       DIV 25 \
+       DIV_FINAL 25 \
+       EMA true \
+
+#the results will be stored in the folder B_MODEL_32FT
+#for the 3rd epoch we will resume the training from the checkpoint
+python train.py config.json \
+       MODEL DeepIceModel \
+       MODEL_KWARGS.dim 384 \
+       MODEL_KWARGS.dim_base 128 \
+       MODEL_KWARGS.depth 12 \
+       MODEL_KWARGS.head_size 32 \
+       OUT B_MODEL_32FT2 \
+       WEIGHTS B_MODEL_32FT/models/model_7.pth \
+       LR_MAX 1e-5 \
+       DIV 25 \
+       DIV_FINAL 25 \
+       EMA true \
+
+#the results will be stored in the folder B_MODEL_32FT2
+#for the 4th epoch we will resume the training from the checkpoint
+python train.py config.json \
+       MODEL DeepIceModel \
+       MODEL_KWARGS.dim 384 \
+       MODEL_KWARGS.dim_base 128 \
+       MODEL_KWARGS.depth 12 \
+       MODEL_KWARGS.head_size 32 \
+       OUT B_MODEL_32FT3 \
+       WEIGHTS B_MODEL_32FT2/models/model_7.pth \
+       LR_MAX 0.5e-5 \
+       DIV 25 \
+       DIV_FINAL 25 \
+       EMA true \
+
+```
+
+```python
+       
+       
+
 ```
 
 ```python
