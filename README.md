@@ -1,6 +1,7 @@
 # icecube-2nd-place
 
-This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice) developed by [DrHB](https://www.kaggle.com/drhabib) and [Iafoss](https://www.kaggle.com/iafoss). To reproduce our results, please follow the instructions provided below.
+This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice) developed by [DrHB](https://www.kaggle.com/drhabib) and [Iafoss](https://www.kaggle.com/iafoss). For more technical results read [here](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882). To reproduce our results, please follow the instructions provided below.
+
 
 ## Installation
 
@@ -47,18 +48,20 @@ python prepare_data.py config.json PATH data
 After completing the data preparation process, your `data` folder should have the following structure:
 
 ```bash
-/data
-     ├── Nevents.pickle
-     ├── ice_transparency.txt
-     ├── sample_submission.parquet
-     ├── sensor_geometry.csv
-     ├── test
-     │   └── batch_661.parquet
-     ├── test_meta.parquet
-     ├── train
-     │   ├── batch_1.parquet
-     │   └── batch_2.parquet
-     └── train_meta.parquet
+data/
+├── Nevents.pickle
+├── ice_transparency.txt
+├── sample_submission.parquet
+├── sensor_geometry.csv
+├── test
+│   └── batch_661.parquet
+├── test_meta.parquet
+├── train
+│   ├── batch_1.parquet
+│   └── batch_2.parquet
+└── train_meta
+    ├── train_meta_1.parquet
+    └── train_meta_2.parquet
 ```
 
 ## Configuration Documentation
