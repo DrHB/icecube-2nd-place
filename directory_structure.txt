@@ -1,0 +1,27 @@
+icecube-2nd-place
+├── LICENSE
+├── README.md
+├── config.json
+├── data
+│   ├── Nevents.pickle
+│   ├── ice_transparency.txt
+│   ├── sample_submission.parquet
+│   ├── sensor_geometry.csv
+│   ├── test
+│   │   └── batch_661.parquet
+│   ├── test_meta.parquet
+│   ├── train
+│   │   ├── batch_1.parquet
+│   │   └── batch_2.parquet
+│   └── train_meta.parquet
+├── directory_structure.txt
+├── predict.py
+├── prepare_data.py
+├── requirements.txt
+├── src
+│   ├── dataset.py
+│   ├── fastai_fix.py
+│   ├── loss.py
+│   ├── models.py
+│   └── utils.py
+└── train.py
