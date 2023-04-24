@@ -25,14 +25,14 @@ The official competition data can be obtained from the [Kaggle website](https://
 ### Additional Datasets
 1. Split `train_meta` `parquet` files for each batch, available for download [here](https://www.kaggle.com/datasets/solverworld/train-meta-parquet).
 
-2.The [`ice_transparency.txt`](https://www.kaggle.com/datasets/anjum48/icecubetransparency) file, which contains information regarding the ice transparency of the IceCube detector.
+2. The [`ice_transparency.txt`](https://www.kaggle.com/datasets/anjum48/icecubetransparency) file, which contains information regarding the ice transparency of the IceCube detector.
 
 ### Preparing the Data
 Create the `Nevents.pickle` file by executing the following command:
 ```bash
 python prepare_data.py config.json PATH data
 ```
-After completing the data preparation process, your data folder should have the following structure:
+After completing the data preparation process, your `data` folder should have the following structure:
 
 ```bash
 /data
@@ -49,13 +49,7 @@ After completing the data preparation process, your data folder should have the 
      └── train_meta.parquet
 ```
 
-
-
-
-
-
-
-
+## Training
 ```python
 # B model 32
 python train.py config.json \
