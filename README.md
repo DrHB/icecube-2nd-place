@@ -102,7 +102,7 @@ For `MODEL_KWARGS`, we have the following parameters:
 
 ## Training
 
-#### `B MODEL 32`
+### `B MODEL 32`
 
 The training process is performed in an `epoch`-based manner. Each `epoch` is divided into `8` `sub-epochs`, essentially dividing the full training data into `8` subsections. The model is trained for a total of `4` `epochs`, using a `one_cycle` learning schedule. After each `epoch`, the best `checkpoint` is loaded, and the training continues with a decreased `learning rate`. The Exponential Moving Average (`EMA`) and the `loss_comb` function are added closer to the last `epoch`. The example below demonstrates training the `B` model for `4` `epochs`. The `OUT` parameter defines a folder where the model `weights` will be stored. For the next `epoch`, the folder is used to load checkpoints and continue training.
 
@@ -165,7 +165,7 @@ python train.py config.json \
 
 ```
 
-#### `B MODEL 64`
+### `B MODEL 64`
 
 ```python
 # B model 64
@@ -245,7 +245,7 @@ python train.py config.json \
 
 ```
 
-#### `B MODEL 64`
+### `B MODEL 64`
 
 model definiation can be found below, for training use the same paramaters as for training `B MODEL 64`
 
@@ -263,7 +263,7 @@ python train.py config.json \
 
 ```
 
-#### `S_MODEL_GNN`
+### `S_MODEL_GNN`
 
 model definiation can be found below, for training use the same paramaters as for training `B MODEL 64`
 
@@ -279,7 +279,7 @@ python train.py config.json \
 
 ```
 
-#### `B_MODEL_GNN`
+### `B_MODEL_GNN`
 
 model definiation can be found below, for training use the same paramaters as for training `B MODEL 64`
 
@@ -294,3 +294,13 @@ python train.py config.json \
        ....
 
 ```
+
+## Infrence
+
+Our inference scripts, models, and kernels are publicly available and can be found [here](https://www.kaggle.com/code/iafoss/icecube-inference-combine-weight?scriptVersionId=126305244) and [here](https://www.kaggle.com/code/iafoss/icecube-inference-combine-weight?scriptVersionId=126419156). To perform inference using our best models, download the model weights from this [link](https://www.kaggle.com/datasets/drhabib/ice-cube-final-models/settings) and place them in the `ice-cube-final-models` folder. Then, execute the following Python script:
+
+```bash
+python predict.py config.json L 512 BS 32
+```
+
+This script can be adapted to run inference for any model that was trained locally. By executing the script with the appropriate configurations, you can perform inference using the selected models and generate predictions based on the trained weights.

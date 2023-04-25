@@ -11,3 +11,5 @@
 data/*
 *.csv
 *.parquet
+*.pth
+ice-cube-final-models/*
