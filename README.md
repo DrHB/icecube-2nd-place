@@ -273,6 +273,7 @@ python train.py config.json \
        MODEL_KWARGS.dim_base 128 \
        MODEL_KWARGS.depth 8 \
        MODEL_KWARGS.head_size 32
+       ....
 
 ```
 
@@ -288,5 +289,6 @@ python train.py config.json \
        MODEL_KWARGS.dim_base 128 \
        MODEL_KWARGS.depth 12 \
        MODEL_KWARGS.head_size 64
+       ....
 
 ```
