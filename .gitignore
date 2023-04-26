@@ -13,3 +13,5 @@ data/*
 *.parquet
 *.pth
 ice-cube-final-models/*
+*.pages
+*.pdf
