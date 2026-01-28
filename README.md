@@ -2,28 +2,24 @@
 
 # IceCube Neutrino Direction Reconstruction
 
-### 2nd Place Solution | Kaggle Competition | Peer-Reviewed Publication
+### Deep Learning for 3D Directional Regression from Sparse Detector Data
 
-[![Kaggle Competition](https://img.shields.io/badge/Kaggle-2nd%20Place-silver?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice)
 [![Paper](https://img.shields.io/badge/EPJC-Published-blue?style=for-the-badge&logo=springer)](https://link.springer.com/article/10.1140/epjc/s10052-024-12977-2)
 [![arXiv](https://img.shields.io/badge/arXiv-2310.15674-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2310.15674)
 
-**Transformer + GNN architecture achieving less than 5 deg angular resolution on cascade events**
+**Transformer + GNN architecture for reconstructing neutrino arrival directions from IceCube optical sensor data**
 
-*[Habib Bukhari](https://www.kaggle.com/drhabib) & [Iafoss](https://www.kaggle.com/iafoss)*
+*Habib Bukhari & Iafoss*
 
 </div>
 
 ---
 
-## Key Achievements
+## Problem
 
-| Metric | Result |
-|--------|--------|
-| **Competition Rank** | 2nd out of 901 teams |
-| **Cascade Events (>10 TeV)** | <5 deg angular resolution |
-| **Track Events** | <0.5 deg angular resolution |
-| **Publication** | European Physical Journal C (2024) |
+The [IceCube Neutrino Observatory](https://icecube.wisc.edu/) is a cubic-kilometer particle detector buried in Antarctic ice, detecting neutrinos through Cherenkov radiation captured by 5,160 optical sensors. Reconstructing the original neutrino direction from sparse, noisy photon arrival times is a challenging inverse problem critical for neutrino astronomy.
+
+This work achieves **<5 deg angular resolution on cascade events** and **<0.5 deg on track events** above 10 TeV, published in [European Physical Journal C (2024)](https://link.springer.com/article/10.1140/epjc/s10052-024-12977-2).
 
 ## Technical Highlights
 
@@ -48,7 +44,7 @@ The architecture processes IceCube detector pulses through:
 
 ## Overview
 
-This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice). For more technical write up read [here](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882). To reproduce our results, please follow the instructions provided below.
+This repository contains the implementation of a Transformer + GNN architecture for neutrino direction reconstruction, which placed 2nd out of 901 teams in the [IceCube Neutrino Detection Challenge](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice). See our [technical write-up](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882) for more details.
 
 ## Installation
 
