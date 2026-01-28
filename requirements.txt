@@ -2,6 +2,7 @@ torch==1.11.0+cu115
 torch_geometric==2.0.4
 torch_scatter==2.0.9
 torch_sparse==0.6.13
+graphnet-framework==1.0.0
 fastai==2.7.10
 fastcore==1.5.27
 timm==0.6.12

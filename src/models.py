@@ -1,11 +1,9 @@
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
-import math
 from timm.models.layers import drop_path, trunc_normal_
-import math
-import torch.utils.checkpoint as checkpoint
 from torch_geometric.utils import to_dense_batch
 from torch_geometric.nn.pool import knn_graph
 from graphnet.models.gnn.gnn import GNN
@@ -15,7 +13,6 @@ from torch_scatter import scatter_max, scatter_mean, scatter_min, scatter_sum
 from typing import Any, Callable, List, Optional, Sequence, Tuple, Union
 from torch import Tensor, LongTensor
 from torch_geometric.nn import EdgeConv
-import torch.nn.functional as F
 from graphnet.utilities.config import save_model_config
 
 class DropPath(nn.Module):
@@ -410,7 +407,7 @@ class LocalBlock(nn.Module):
         mask = (
             key_padding_mask
             if not (key_padding_mask is None)
-            else torch.ones(B, Lmax, dtype=torch.bool, device=x.deice)
+            else torch.ones(B, Lmax, dtype=torch.bool, device=x.device)
         )
 
         m = torch.gather(mask.unsqueeze(1).expand(-1, Lmax, -1), 2, nbs)

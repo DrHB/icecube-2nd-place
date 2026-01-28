@@ -123,7 +123,7 @@ The `config.json` file contains various settings and parameters for the training
 | `L`            | `192`                   | Length of input sequence for training      |
 | `L_VALID`      | `192`                   | Length of input sequence for validation    |
 | `EPOCHS`       | `8`                     | Number of training epochs                  |
-| `MODEL`        | `DeepIceModel`          | Model architecture, choise                 |
+| `MODEL`        | `DeepIceModel`          | Model architecture                         |
 | `MOMS`         | `false`                 | Momentum scheduling in the optimizer       |
 | `DIV`          | `25`                    | Initial learning rate divisor              |
 | `LR_MAX`       | `5e-4`                  | Max learning rate                          |

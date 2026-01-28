@@ -22,7 +22,6 @@ from src.models import (
     EncoderWithDirectionReconstructionV22,
     EncoderWithDirectionReconstructionV23,
 )
-from pdb import set_trace
 
 
 def read_config_file(file_path):
