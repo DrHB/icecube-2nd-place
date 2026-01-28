@@ -373,3 +373,17 @@ If you use this code in your research, please cite our paper:
 - [European Physical Journal C](https://link.springer.com/article/10.1140/epjc/s10052-024-12977-2)
 - [arXiv Preprint](https://arxiv.org/abs/2310.15674)
 - [Kaggle Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice)
+
+## Keywords
+
+`neutrino-detection` `icecube` `deep-learning` `transformers` `graph-neural-networks` `physics` `particle-physics` `kaggle-competition` `pytorch` `directional-regression` `von-mises-fisher` `attention-mechanism`
+
+---
+
+<div align="center">
+
+**Star this repo if you find it useful!**
+
+*Questions? Open an issue or reach out.*
+
+</div>
