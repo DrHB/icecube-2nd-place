@@ -9,8 +9,6 @@
 
 **Transformer + GNN architecture for reconstructing neutrino arrival directions from IceCube optical sensor data**
 
-*Habib Bukhari & Iafoss*
-
 </div>
 
 ---
