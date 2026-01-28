@@ -1,8 +1,22 @@
-# icecube-2nd-place
+<div align="center">
 
-This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice) developed by [DrHB](https://www.kaggle.com/drhabib) and [Iafoss](https://www.kaggle.com/iafoss). For more technical write up read [here](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882). To reproduce our results, please follow the instructions provided below.
+# IceCube Neutrino Direction Reconstruction
 
-![model_image](assets/model_structure.png)
+### 2nd Place Solution | Kaggle Competition | Peer-Reviewed Publication
+
+[![Kaggle Competition](https://img.shields.io/badge/Kaggle-2nd%20Place-silver?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice)
+[![Paper](https://img.shields.io/badge/EPJC-Published-blue?style=for-the-badge&logo=springer)](https://link.springer.com/article/10.1140/epjc/s10052-024-12977-2)
+[![arXiv](https://img.shields.io/badge/arXiv-2310.15674-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2310.15674)
+
+**Transformer + GNN architecture achieving less than 5 deg angular resolution on cascade events**
+
+*[Habib Bukhari](https://www.kaggle.com/drhabib) & [Iafoss](https://www.kaggle.com/iafoss)*
+
+</div>
+
+---
+
+This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice). For more technical write up read [here](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882). To reproduce our results, please follow the instructions provided below.
 
 ## Installation
 
