@@ -341,7 +341,7 @@ python train.py config.json \
 
 ```
 
-## Infrence
+## Inference
 
 Our inference scripts, models, and kernels are publicly available and can be found [here](https://www.kaggle.com/code/iafoss/icecube-inference-combine-weight?scriptVersionId=126305244) and [here](https://www.kaggle.com/code/iafoss/icecube-inference-combine-weight?scriptVersionId=126419156). To perform inference using our best models, download the model weights from this [link](https://www.kaggle.com/datasets/drhabib/ice-cube-final-models/settings) and place them in the `ice-cube-final-models` folder. Then, execute the following Python script:
 
