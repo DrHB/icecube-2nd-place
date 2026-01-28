@@ -350,3 +350,26 @@ python predict.py config.json L 512 BS 32
 ```
 
 This script can be adapted to run inference for any model that was trained locally. By executing the script with the appropriate configurations, you can perform inference using the selected models and generate predictions based on the trained weights.
+
+## Citation
+
+If you use this code in your research, please cite our paper:
+
+```bibtex
+@article{bukhari2024icecube,
+  title={IceCube--Neutrinos in Deep Ice: the top 3 solutions from the public Kaggle competition},
+  author={Bukhari, Habib and Chakraborty, Dipam and Eller, Philipp and Ito, Takuya and Shugaev, Maxim V and {\O}rs{\o}e, Rasmus},
+  journal={The European Physical Journal C},
+  volume={84},
+  number={6},
+  pages={571},
+  year={2024},
+  publisher={Springer},
+  doi={10.1140/epjc/s10052-024-12977-2}
+}
+```
+
+**Paper Links:**
+- [European Physical Journal C](https://link.springer.com/article/10.1140/epjc/s10052-024-12977-2)
+- [arXiv Preprint](https://arxiv.org/abs/2310.15674)
+- [Kaggle Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice)
