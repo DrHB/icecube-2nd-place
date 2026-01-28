@@ -16,6 +16,38 @@
 
 ---
 
+## Key Achievements
+
+| Metric | Result |
+|--------|--------|
+| **Competition Rank** | 2nd out of 901 teams |
+| **Cascade Events (>10 TeV)** | <5 deg angular resolution |
+| **Track Events** | <0.5 deg angular resolution |
+| **Publication** | European Physical Journal C (2024) |
+
+## Technical Highlights
+
+- **Novel Architecture**: Transformer encoder with Graph Neural Network (GNN) combining local and global attention
+- **Von Mises-Fisher Loss**: Probabilistic loss function for 3D directional regression on the sphere
+- **Ensemble Strategy**: Weighted combination of 5 model variants for robust predictions
+- **Efficient Processing**: Handles variable-length pulse sequences up to 768 pulses
+
+## Model Architecture
+
+<p align="center">
+  <img src="assets/model_structure.png" alt="Model Architecture" width="600"/>
+</p>
+
+The architecture processes IceCube detector pulses through:
+1. **Feature Embedding**: DOM positions, pulse times, charges, and ice properties
+2. **Transformer Blocks**: BEiTv2-style attention with relative position encoding
+3. **GNN Layers**: Graph attention for spatial relationships between sensors
+4. **Direction Head**: Von Mises-Fisher distribution parameters for 3D direction
+
+---
+
+## Overview
+
 This repository contains the source code for the 2nd place solution in the [Kaggle IceCube Neutrino Detection Competition](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice). For more technical write up read [here](https://www.kaggle.com/competitions/icecube-neutrinos-in-deep-ice/discussion/402882). To reproduce our results, please follow the instructions provided below.
 
 ## Installation
